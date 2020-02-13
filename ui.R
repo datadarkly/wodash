@@ -3,8 +3,8 @@
 #Ver. 2.0.1
 #By Carter Richard
 
-vers <- "2.0.2"
-last_updated <- "2/4/2020"
+vers <- "2.0.3"
+last_updated <- "2/12/2020"
 
 library(shiny)
 library(shinydashboard)
@@ -15,6 +15,7 @@ library(janitor)
 library(tidyr)
 library(timevis)
 library(readxl)
+library(writexl)
 
 dashboardPage(
     dashboardHeader(title = "WO Dashboard"),
@@ -88,9 +89,11 @@ dashboardPage(
             
             tabItem(tabName = "table",
                     h2("Table"),
-                    h4("This tab is the raw report data as filtered down via
-                       the parameters to the left, sorted by labor amount.
-                       Assigments are the work order FIRST LINE only."),
+                        h4("This tab is the raw report data as filtered down via
+                           the parameters to the left, sorted by labor amount.
+                           Assigments are the work order FIRST LINE only."),
+                        downloadButton("dl", "Export Table"),
+                        h4(""),
                     box(tableOutput("contents"), width = 12)
             )
             

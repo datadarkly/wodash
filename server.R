@@ -166,4 +166,9 @@ shinyServer(function(input, output, session) {
         )
     })
     
+    output$dl <- downloadHandler(
+        filename = function() { "WODASH_Export.xlsx"},
+        content = function(file) {write_xlsx(myDataFilt(), path = file)}
+    )
+    
 })
